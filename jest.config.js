@@ -1,7 +1,7 @@
 /* eslint-disable semi */
 /* eslint-disable quotes */
 module.exports = {
-  collectCoverageFrom: ["<rootDir>/src/**/*.ts", "<rootDir>/__tests__/**/*.ts", "!<rootDir>/src/main/**"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts", "<rootDir>/__TESTS__/**/*.ts", "!<rootDir>/src/main/**"],
   coverageDirectory: "coverage",
   testEnvironment: "node",
   preset: "@shelf/jest-mongodb",
@@ -10,7 +10,7 @@ module.exports = {
   },
   moduleDirectories: [
     "<rootDir>/src",
-    "<rootDir>/__tests__",
+    "<rootDir>/__TESTS__",
     "<rootDir>/node_modules"
   ]
 };
