@@ -6,7 +6,7 @@
   "license": "ISC",
   "repository": "github:rmanguinho/clean-ts-api",
   "scripts": {
-    "start": "node dist/main/server.js",
+    "start": "node -r tsconfig-paths/register -r ts-node/register dist/src/main/server.js",
     "build": "rimraf dist && tsc",
     "debug": "nodemon --nolazy ./src/main/server.ts",
     "up": "docker-compose up -d",

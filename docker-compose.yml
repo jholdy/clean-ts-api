@@ -11,6 +11,7 @@ services:
   api:
     container_name: api-container
     image: node:12
+    user: 1000:1000
     working_dir: /home/app
     restart: always
     command: bash -c "yarn debug"
