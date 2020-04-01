@@ -8,6 +8,6 @@
   "watch": [
     "./src"
   ],
-  "exec": "node -r tsconfig-paths/register -r ts-node/register src/main/server.ts",
+  "exec": "node --inspect=0.0.0.0:9222  -r tsconfig-paths/register -r ts-node/register",
   "ext": "ts"
 }

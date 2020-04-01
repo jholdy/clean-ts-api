@@ -13,7 +13,7 @@ services:
     image: node:12
     working_dir: /home/app
     restart: always
-    command: bash -c "yarn nodemon"
+    command: bash -c "yarn debug"
     volumes:
       - ./:/home/app
     ports:

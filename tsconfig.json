@@ -5,7 +5,10 @@
     "target": "es2019",
     "esModuleInterop": true,
     "sourceMap": true,
-    "rootDir": "src",
+    "rootDirs": [
+      "src",
+      "__TESTS__"
+    ],
     "baseUrl": "src"
   },
   "include": [
