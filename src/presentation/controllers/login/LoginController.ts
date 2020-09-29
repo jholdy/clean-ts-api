@@ -11,6 +11,28 @@ export default class LoginController implements Controller {
     private readonly validation: Validation
   ) { }
 
+  /**
+   * @swagger
+   *
+   * /login:
+   *   post:
+   *     description: Login to the application
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: user
+   *         description: User object
+   *         in:  body
+   *         required: true
+   *         type: string
+   *         schema:
+   *           $ref: '#/definitions/NewUser'
+   *     responses:
+   *       200:
+   *         description: OK
+   *         schema:
+ *            $ref: '#/definitions/ResponseAuth'
+   */
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = this.validation.validate(httpRequest.body)
