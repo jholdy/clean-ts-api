@@ -3,12 +3,12 @@ import { app } from 'main/config/app'
 import { Collection } from 'mongodb'
 import { hash } from 'bcrypt'
 import MongoHelper from 'infra/db/mongodb/helpers/MongoHelper'
-
+import env from 'main/config/env'
 let accountCollection: Collection
 
 describe('Login Routes', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(process.env.MONGO_URL)
+    await MongoHelper.connect(env.mongoUrl)
   })
 
   afterAll(async () => {

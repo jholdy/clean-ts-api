@@ -31,7 +31,7 @@ export default class LoginController implements Controller {
    *       200:
    *         description: OK
    *         schema:
- *            $ref: '#/definitions/ResponseAuth'
+   *          $ref: '#/definitions/ResponseAuth'
    */
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {

@@ -1,12 +1,13 @@
 import MongoHelper from 'infra/db/mongodb/helpers/MongoHelper'
 import AccountMongoRepository from 'infra/db/mongodb/account/AccountMongoRepository'
 import { Collection } from 'mongodb'
+import env from 'main/config/env'
 
 let accountCollection: Collection
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(process.env.MONGO_URL)
+    await MongoHelper.connect(env.mongoUrl)
   })
 
   afterAll(async () => {
