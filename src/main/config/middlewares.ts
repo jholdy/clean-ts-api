@@ -4,7 +4,7 @@ import { cors } from 'main/middlewares/cors'
 import { contentType } from 'main/middlewares/contentType'
 
 export default function middlewares (app: Express): void {
-  app.use(bodyParser)
   app.use(cors)
+  app.use(bodyParser)
   app.use(contentType)
 }

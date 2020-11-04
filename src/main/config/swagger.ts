@@ -14,8 +14,11 @@ export default function swagger (app: Express): void {
         contact: {
           name: 'Jholdy Damasceno'
         },
+        url: `http://localhost:${env.port}/api`,
         servers: [`http://localhost:${env.port}`]
       },
+      host: `localhost:${env.port}`,
+      basePath: '/api',
       securityDefinitions: {
         bearerAuth: {
           type: 'apiKey',
