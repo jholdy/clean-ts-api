@@ -13,10 +13,10 @@
     "down": "docker-compose down",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
-    "test:unit": "npm --scripts-prepend-node-path test -- --watch -c jest-unit-config.js",
-    "test:integration": "npm --scripts-prepend-node-path test -- --watch -c jest-integration-config.js",
-    "test:staged": "npm --scripts-prepend-node-path test -- --findRelatedTests",
-    "test:ci": "npm --scripts-prepend-node-path test -- --coverage"
+    "test:unit": "npm --scripts-prepend-node-path=true test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm --scripts-prepend-node-path=true test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm --scripts-prepend-node-path=true test -- --findRelatedTests",
+    "test:ci": "npm --scripts-prepend-node-path=true test -- --coverage"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
