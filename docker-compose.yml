@@ -17,7 +17,7 @@ services:
     command: bash -c "yarn debug"
     volumes:
       - ./:/home/app
-      - ~/.gitconfig-docker:/etc/gitconfig
+      - .gitconfig:/home/node/.gitconfig
     ports:
       - "5050:5050"
       - "9222:9222"
