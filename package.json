@@ -11,12 +11,12 @@
     "debug": "nodemon --nolazy ./src/main/server.ts",
     "up": "docker-compose up -d",
     "down": "docker-compose down",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --scripts-prepend-node-path",
-    "test:verbose": "jest --passWithNoTests --runInBand --scripts-prepend-node-path",
-    "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:integration": "npm test -- --watch -c jest-integration-config.js",
-    "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "npm test -- --coverage"
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:unit": "npm --scripts-prepend-node-path test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm --scripts-prepend-node-path test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm --scripts-prepend-node-path test -- --findRelatedTests",
+    "test:ci": "npm --scripts-prepend-node-path test -- --coverage"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
