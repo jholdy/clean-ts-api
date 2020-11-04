@@ -4,3 +4,4 @@
 /data
 /yarn.lock
 /package-lock.json
+.globalConfig.json
