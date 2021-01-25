@@ -2,14 +2,14 @@ import Controller from 'presentation/protocols/Controller'
 import HttpRequest from 'presentation/protocols/HttpRequest'
 import HttpResponse from 'presentation/protocols/HttpResponse'
 import LogErrorRepository from 'data/protocols/db/log/LogErrorRepository'
-import AccountModel from 'domain/models/Account'
+import Account from 'domain/models/Account'
 import { serverError, ok } from 'presentation/helpers/http/HttpHelper'
 import LogControllerDecorator from 'main/decorators/LogControllerDecorator'
 
 const makeController = (): Controller => {
   class ControllerStub implements Controller {
     async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-      return new Promise(resolve => resolve(ok(makeFakeAccount())))
+      return await new Promise(resolve => resolve(ok(makeFakeAccount())))
     }
   }
   return new ControllerStub()
@@ -18,7 +18,7 @@ const makeController = (): Controller => {
 const makeLogErrorRepository = (): LogErrorRepository => {
   class LogErrorRepositoryStub implements LogErrorRepository {
     async logError (stack: string): Promise<void> {
-      return new Promise(resolve => resolve())
+      return await new Promise(resolve => resolve())
     }
   }
   return new LogErrorRepositoryStub()
@@ -33,7 +33,7 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-const makeFakeAccount = (): AccountModel => ({
+const makeFakeAccount = (): Account => ({
   id: 'valid_id',
   name: 'valid_name',
   email: 'valid_email@mail.com',

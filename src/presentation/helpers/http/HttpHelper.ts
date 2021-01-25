@@ -7,6 +7,11 @@ export const badRequest = (error: Error): HttpResponse => ({
   body: error
 })
 
+export const unprocessableEntity = (error: Error): HttpResponse => ({
+  statusCode: 422,
+  body: error
+})
+
 export const unauthorized = (): HttpResponse => ({
   statusCode: 401,
   body: new UnauthorizedError()

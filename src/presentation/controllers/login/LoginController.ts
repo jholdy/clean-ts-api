@@ -1,4 +1,4 @@
-import { badRequest, serverError, unauthorized, ok } from 'presentation/helpers/http/HttpHelper'
+import { serverError, unauthorized, ok, unprocessableEntity } from 'presentation/helpers/http/HttpHelper'
 import Controller from 'presentation/protocols/Controller'
 import Authentication from 'domain/usecases/Authentication'
 import Validation from 'presentation/protocols/Validation'
@@ -32,12 +32,25 @@ export default class LoginController implements Controller {
    *         description: OK
    *         schema:
    *          $ref: '#/definitions/ResponseAuth'
+   *       401:
+   *         description: UnauthorizedError
+   *         schema:
+   *          $ref: '#/definitions/ResponseError'
+   *       422:
+   *         description: MissingParamError | InvalidParamError
+   *         schema:
+   *          $ref: '#/definitions/ResponseError'
+   *       500:
+   *         description: ServerError
+   *         schema:
+   *          $ref: '#/definitions/ResponseError'
    */
+
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = this.validation.validate(httpRequest.body)
       if (error) {
-        return badRequest(error)
+        return unprocessableEntity(error)
       }
       const { email, password } = httpRequest.body
       const accessToken = await this.authentication.auth({

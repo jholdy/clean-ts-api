@@ -1,6 +1,6 @@
-import AddAccount from 'domain/usecases/AddAccount'
-import AddAccountModel from 'domain/usecases/AddAccountModel'
-import AccountModel from 'domain/models/Account'
+import AddAccountInterface from 'domain/usecases/AddAccountInterface'
+import AddAccountParans from 'domain/usecases/AddAccountParans'
+import Account from 'domain/models/Account'
 import Validation from 'presentation/protocols/Validation'
 import HttpRequest from 'presentation/protocols/HttpRequest'
 import SignUpController from 'presentation/controllers/signup/SignupController'
@@ -8,9 +8,9 @@ import { serverError, ok, badRequest } from 'presentation/helpers/http/HttpHelpe
 import ServerError from 'presentation/errors/ServerError'
 import MissingParamError from 'presentation/errors/MissingParamError'
 
-const makeAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
-    async add (account: AddAccountModel): Promise<AccountModel> {
+const makeAddAccount = (): AddAccountInterface => {
+  class AddAccountStub implements AddAccountInterface {
+    async add (account: AddAccountParans): Promise<Account> {
       return await new Promise(resolve => resolve(makeFakeAccount()))
     }
   }
@@ -26,7 +26,7 @@ const makeValidation = (): Validation => {
   return new ValidationStub()
 }
 
-const makeFakeAccount = (): AccountModel => ({
+const makeFakeAccount = (): Account => ({
   id: 'valid_id',
   name: 'valid_name',
   email: 'valid_email@mail.com',
@@ -44,7 +44,7 @@ const makeFakeRequest = (): HttpRequest => ({
 
 interface SutTypes {
   sut: SignUpController
-  addAccountStub: AddAccount
+  addAccountStub: AddAccountInterface
   validationStub: Validation
 }
 

@@ -3,13 +3,13 @@ import AuthenticationModel from 'domain/usecases/AuthenticationModel'
 import Validation from 'presentation/protocols/Validation'
 import HttpRequest from 'presentation/protocols/HttpRequest'
 import LoginController from 'presentation/controllers/login/LoginController'
-import { unauthorized, serverError, ok, badRequest } from 'presentation/helpers/http/HttpHelper'
+import { unauthorized, serverError, ok, unprocessableEntity } from 'presentation/helpers/http/HttpHelper'
 import MissingParamError from 'presentation/errors/MissingParamError'
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
     async auth (authentication: AuthenticationModel): Promise<string> {
-      return new Promise(resolve => resolve('any_token'))
+      return await new Promise(resolve => resolve('any_token'))
     }
   }
   return new AuthenticationStub()
@@ -87,10 +87,10 @@ describe('Login Controller', () => {
     expect(validateSpy).toHaveBeenCalledWith(httpRequest.body)
   })
 
-  test('Should return 400 if Validation returns an error', async () => {
+  test('Should return 422 if Validation returns an error', async () => {
     const { sut, validationStub } = makeSut()
     jest.spyOn(validationStub, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+    expect(httpResponse).toEqual(unprocessableEntity(new MissingParamError('any_field')))
   })
 })

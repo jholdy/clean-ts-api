@@ -1,4 +1,4 @@
-export default interface AccountModel {
+export default interface Account {
   id: string
   name: string
   email: string

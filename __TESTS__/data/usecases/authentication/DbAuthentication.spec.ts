@@ -1,12 +1,12 @@
-import AccountModel from "domain/models/Account"
+import Account from "domain/models/Account"
 import AuthenticationModel from "domain/usecases/AuthenticationModel"
 import LoadAccountByEmailRepository from "data/protocols/db/account/LoadAccountByEmailRepository"
 import HashComparer from "data/protocols/criptography/HashComparer"
 import Encrypter from "data/protocols/criptography/Encrypter"
 import UpdateAccessTokenRepository from "data/protocols/db/account/UpdateAccessTokenRepository"
-import DbAuthentication from "data/usecases/authentication/DbAuthentication"
+import DbAuthentication from "data/usecases/DbAuthentication"
 
-const makeFakeAccount = (): AccountModel => ({
+const makeFakeAccount = (): Account => ({
   id: 'any_id',
   name: 'any_name',
   email: 'any_email@mail.com',
@@ -20,7 +20,7 @@ const makeFakeAuthentication = (): AuthenticationModel => ({
 
 const makeLoadAccountByEmailRepository = (): LoadAccountByEmailRepository => {
   class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
-    async loadByEmail (email: string): Promise<AccountModel> {
+    async loadByEmail (email: string): Promise<Account> {
       return new Promise(resolve => resolve(makeFakeAccount()))
     }
   }

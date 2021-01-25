@@ -1,8 +1,8 @@
 import Hasher from "data/protocols/criptography/Hasher"
 import AddAccountRepository from "data/protocols/db/account/AddAccountRepository"
-import AddAccountModel from "domain/usecases/AddAccountModel"
-import AccountModel from "domain/models/Account"
-import DbAddAccount from "data/usecases/add-account/DbAddAccount"
+import Account from "domain/models/Account"
+import DbAddAccount from "data/usecases/DbAddAccount"
+import AddAccountParans from "domain/usecases/AddAccountParans"
 
 const makeHasher = (): Hasher => {
   class HasherStub implements Hasher {
@@ -15,21 +15,21 @@ const makeHasher = (): Hasher => {
 
 const makeAddAccountRepository = (): AddAccountRepository => {
   class AddAccountRepositoryStub implements AddAccountRepository {
-    async add (accountData: AddAccountModel): Promise<AccountModel> {
+    async add (accountData: AddAccountParans): Promise<Account> {
       return new Promise(resolve => resolve(makeFakeAccount()))
     }
   }
   return new AddAccountRepositoryStub()
 }
 
-const makeFakeAccount = (): AccountModel => ({
+const makeFakeAccount = (): Account => ({
   id: 'valid_id',
   name: 'valid_name',
   email: 'valid_email',
   password: 'hashed_password'
 })
 
-const makeFakeAccountData = (): AddAccountModel => ({
+const makeFakeAccountData = (): AddAccountParans => ({
   name: 'valid_name',
   email: 'valid_email',
   password: 'valid_password'
