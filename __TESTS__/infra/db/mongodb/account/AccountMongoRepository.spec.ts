@@ -2,6 +2,7 @@ import MongoHelper from 'infra/db/mongodb/helpers/MongoHelper'
 import AccountMongoRepository from 'infra/db/mongodb/account/AccountMongoRepository'
 import { Collection } from 'mongodb'
 import env from 'main/config/env'
+import Account from 'domain/models/Account'
 
 let accountCollection: Collection
 
@@ -65,7 +66,7 @@ describe('Account Mongo Repository', () => {
       email: 'any_email@mail.com',
       password: 'any_password'
     })
-    const fakeAccount = res.ops[0]
+    const fakeAccount: Account = res.ops[0]
     expect(fakeAccount.accessToken).toBeFalsy()
     await sut.updateAccessToken(fakeAccount._id, 'any_token')
     const account = await accountCollection.findOne({ _id: fakeAccount._id })

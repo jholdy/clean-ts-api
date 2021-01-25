@@ -22,9 +22,8 @@ export default function swagger (app: Express): void {
       securityDefinitions: {
         bearerAuth: {
           type: 'apiKey',
-          name: 'Authorization',
-          scheme: 'bearer',
-          in: 'header'
+          in: 'header',
+          name: 'x-access-token'
         }
       }
     },

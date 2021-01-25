@@ -26,3 +26,8 @@ export const ok = (data: any): HttpResponse => ({
   statusCode: 200,
   body: data
 })
+
+export const forbidden = (data: any): HttpResponse => ({
+  statusCode: 403,
+  body: data
+})

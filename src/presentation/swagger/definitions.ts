@@ -2,6 +2,19 @@
  * @swagger
  *
  * definitions:
+ *   AccountList:
+ *     type: object
+ *     required:
+ *       - id
+ *       - name
+ *       - email
+ *     properties:
+ *       id:
+ *         type: string
+ *       name:
+ *         type: string
+ *       email:
+ *         type: string
  *   NewUser:
  *     type: object
  *     required:
@@ -43,6 +56,22 @@
  *     properties:
  *       accessToken:
  *         type: string
+ *   ResponseAccounts:
+ *     type: object
+ *     required:
+ *       - accounts
+ *     properties:
+ *       accounts:
+ *         type: array
+ *         items:
+ *           $ref: '#/definitions/AccountList'
+ *         example:
+ *           - id: 123sdf123
+ *             name: fulano de tal
+ *             email: folano@detal.com
+ *           - id: asd123asd
+ *             name: Fulana de tal
+ *             email: fulana@detal.com
  *   ResponseAddUser:
  *     type: object
  *     required:
